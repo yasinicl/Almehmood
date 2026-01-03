@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Phone, Mail, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MessageCircle, MapPin } from 'lucide-react';
 import { COMPANY_INFO } from '@/lib/data';
 import Image from 'next/image';
 import logo from '../public/logo.png';
@@ -231,6 +231,12 @@ export default function ContactSection() {
                     {COMPANY_INFO.emails.map((email, idx) => (
                       <div key={idx} className="break-all">{email}</div>
                     ))}
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-brand-accent-600 flex-shrink-0 mt-1" />
+                  <div className="text-brand-primary-700 text-sm">
+                    {COMPANY_INFO.address}
                   </div>
                 </div>
               </div>

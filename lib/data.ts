@@ -14,6 +14,7 @@ export const COMPANY_INFO = {
     '0340 7221765',
   ],
   whatsapp: '+923005960085',
+  address: 'Flat no 21, second floor, shahid plaza, university road, peshawar',
 };
 
 export const TRUST_FEATURES = [
