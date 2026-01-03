@@ -4,7 +4,11 @@ import { motion } from 'framer-motion';
 import { Check, Star, Sparkles } from 'lucide-react';
 import { PACKAGES, PACKAGE_DETAILS } from '@/lib/data';
 
-export default function PackagesSection() {
+interface PackagesSectionProps {
+  onSelectPackage?: (packageName: string) => void;
+}
+
+export default function PackagesSection({ onSelectPackage }: PackagesSectionProps) {
   return (
     <section id="packages" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-white via-brand-secondary-50/20 to-white relative overflow-hidden">
       <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-brand-accent-100 rounded-full blur-3xl opacity-20"></div>
@@ -116,6 +120,7 @@ export default function PackagesSection() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => onSelectPackage?.(pkg.type)}
                   className={`w-full py-4 text-white font-bold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 ${
                     pkg.popular
                       ? 'gradient-accent'

@@ -6,12 +6,11 @@ export const COMPANY_INFO = {
   licenseNumber: '3395',
   emails: [
     'almehmoodhajjservices@gmail.com',
-    'engr_52@yahoo.com',
+    'engr_waheed52@yahoo.com',
   ],
   phones: [
     '091 5702084',
     '0300 5960085',
-    '0340 7221765',
   ],
   whatsapp: '+923005960085',
   address: 'Flat no 21, second floor, shahid plaza, university road, peshawar',

@@ -5,8 +5,13 @@ import { Phone, Mail, MessageCircle, MapPin } from 'lucide-react';
 import { COMPANY_INFO } from '@/lib/data';
 import Image from 'next/image';
 import logo from '../public/logo.png';
+import ContactForm from './ContactForm';
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  selectedPackage?: string;
+}
+
+export default function ContactSection({ selectedPackage }: ContactSectionProps) {
   const openWhatsApp = () => {
     window.open(`https://wa.me/${COMPANY_INFO.whatsapp}`, '_blank');
   };
@@ -56,101 +61,88 @@ export default function ContactSection() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="lg:col-span-2"
-            >
-              <div className="glass-effect bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl hover:shadow-brand-accent-500/20 transition-all duration-300 border border-white/20 h-full">
-                <div className="flex justify-center mb-6">
-                  <div className="p-4 gradient-accent rounded-xl shadow-xl">
-                    <Phone className="w-8 h-8 text-white" strokeWidth={2} />
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
+            <div className="lg:col-span-3">
+              <ContactForm selectedPackage={selectedPackage} />
+            </div>
+
+            <div className="lg:col-span-2 space-y-6">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                className="glass-effect bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/20"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 gradient-accent rounded-xl shadow-lg">
+                    <Phone className="w-6 h-6 text-white" />
                   </div>
+                  <h3 className="text-white font-bold text-xl">Call Us</h3>
                 </div>
-                <h3 className="text-white font-bold text-xl mb-6 text-center">
-                  Call Us Anytime
-                </h3>
                 <div className="space-y-3">
                   {COMPANY_INFO.phones.map((phone, idx) => (
                     <motion.button
                       key={idx}
-                      whileHover={{ scale: 1.05, x: 5 }}
+                      whileHover={{ scale: 1.02, x: 5 }}
                       onClick={() => makeCall(phone)}
-                      className="w-full text-white bg-white/10 hover:bg-white/20 transition-all py-3 px-4 rounded-lg text-center font-semibold border border-white/20 hover:border-brand-accent-400"
+                      className="w-full text-white bg-white/5 hover:bg-white/10 transition-all py-3 px-4 rounded-lg text-left font-semibold border border-white/10 flex items-center justify-between group"
                     >
-                      {phone}
+                      <span>{phone}</span>
+                      <Phone className="w-4 h-4 text-brand-accent-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </motion.button>
                   ))}
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="lg:col-span-2"
-            >
-              <div className="glass-effect bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl hover:shadow-brand-accent-500/20 transition-all duration-300 border border-white/20 h-full">
-                <div className="flex justify-center mb-6">
-                  <div className="p-4 gradient-accent rounded-xl shadow-xl">
-                    <Mail className="w-8 h-8 text-white" strokeWidth={2} />
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="glass-effect bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/20"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 gradient-accent rounded-xl shadow-lg">
+                    <Mail className="w-6 h-6 text-white" />
                   </div>
+                  <h3 className="text-white font-bold text-xl">Email Us</h3>
                 </div>
-                <h3 className="text-white font-bold text-xl mb-6 text-center">
-                  Email Us
-                </h3>
                 <div className="space-y-3">
                   {COMPANY_INFO.emails.map((email, idx) => (
                     <motion.button
                       key={idx}
-                      whileHover={{ scale: 1.05, x: 5 }}
+                      whileHover={{ scale: 1.02, x: 5 }}
                       onClick={() => sendEmail(email)}
-                      className="w-full text-white bg-white/10 hover:bg-white/20 transition-all py-3 px-4 rounded-lg text-center font-medium border border-white/20 hover:border-brand-accent-400 break-all"
+                      className="w-full text-white bg-white/5 hover:bg-white/10 transition-all py-3 px-4 rounded-lg text-left font-medium border border-white/10 flex items-center justify-between group break-all"
                     >
-                      {email}
+                      <span className="text-sm sm:text-base">{email}</span>
+                      <Mail className="w-4 h-4 text-brand-accent-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                     </motion.button>
                   ))}
                 </div>
-              </div>
-            </motion.div>
-          </div>
+              </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="mt-12 max-w-4xl mx-auto"
-          >
-            <div className="bg-gradient-to-r from-green-500 to-green-600 p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-2xl hover:shadow-green-500/50 transition-all">
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-                <div className="flex items-center gap-3 sm:gap-4 text-center sm:text-left">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-2xl shadow-xl hover:shadow-green-500/30 transition-all group cursor-pointer"
+                onClick={openWhatsApp}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <MessageCircle className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-white">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-0.5 sm:mb-1">Chat on WhatsApp</h4>
-                    <p className="text-sm sm:text-base text-green-100">Get instant responses to your queries</p>
+                    <h4 className="font-bold text-lg">WhatsApp Chat</h4>
+                    <p className="text-sm text-green-100">Instant response</p>
                   </div>
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={openWhatsApp}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-green-600 text-sm sm:text-base font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all whitespace-nowrap"
-                >
-                  Start Chatting
-                </motion.button>
-              </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
