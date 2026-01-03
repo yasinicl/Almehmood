@@ -1,5 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Al-Mehmood Hajj & Umrah - Your Trusted Umrah Partner",
@@ -17,10 +22,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Al-Mehmood Hajj & Umrah - Your Trusted Umrah Partner",
     description: "Complete Umrah packages with comfort and trust. Licensed tour operator.",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
   },
   robots: {
     index: true,
