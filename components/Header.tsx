@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
 import Image from 'next/image';
+import logo from '../public/logo.png';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -55,7 +56,7 @@ export default function Header() {
             >
               <div className="relative w-40 h-16 sm:w-32 sm:h-20 md:w-[200px] md:h-24">
                 <Image
-                  src="/logo.png"
+                  src={logo}
                   alt="Al-Mehmood Hajj & Umrah Logo"
                   fill
                   className="object-contain"

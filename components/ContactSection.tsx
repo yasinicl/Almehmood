@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Phone, Mail, MessageCircle } from 'lucide-react';
 import { COMPANY_INFO } from '@/lib/data';
 import Image from 'next/image';
+import logo from '../public/logo.png';
 
 export default function ContactSection() {
   const openWhatsApp = () => {
@@ -167,7 +168,7 @@ export default function ContactSection() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="relative w-44 h-16 sm:w-32 sm:h-20 md:w-[250px] md:h-24">
                   <Image
-                    src="/logo.png"
+                    src={logo}
                     alt="Al-Mehmood Hajj & Umrah Logo"
                     fill
                     className="object-contain"
